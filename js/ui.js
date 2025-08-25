@@ -238,7 +238,7 @@ function opt(){
 		{
 			title: ["项目", "project"],
 			icon: "0000000000000000000000000000000000000001111110000000000100001000000001111110100000000100001010000001111110101000000100001010100000010000101110000001000010100000000100001110000000010000100000000001111110000000000000000000000000000000000000000000000000000000",
-			link: "",
+			link: "page/project.html",
 			isRight: false
 		},
 		{
@@ -371,6 +371,10 @@ function opt(){
 			}
 			Ebox.onmouseleave = function(){
 				box.vars.border.setFinal(0);
+			}
+			Ebox.onclick = function(){
+				if(!box.vars.data.link) return ;
+				openIframe(box.vars.data.link);
 			}
 			document.body.appendChild(Ebox);
 			
