@@ -468,6 +468,19 @@ function generateContrastingColor(rgb){
 	var res = oklchToRgb(oklch);
 	return res;
 }
+/**
+ * 获取配色
+ * @return { Object } main: 主色, vice: 副色, anti: 对比色
+*/
+function getColor(main){
+	var rgb = SHexToARgb(main);
+	return {
+		main: ARgbToSRgb(rgb),
+		vice: ARgbToSRgb(generateSecondaryColor(rgb)),
+		anti: ARgbToSRgb(generateContrastingColor(rgb))
+		
+	}
+}
 
 
 /**
@@ -490,4 +503,43 @@ linear.prototype.run = function(delta){
 	d = d > 1 ? 1 : d;
 	this.value = this.value + d * (this.final - this.value);
 	return this.value;
+}
+
+
+//index.html
+//元素盒
+var boxs = {};
+function box(id, vars, attr, fn, initialize){
+	this.id = id;
+	this.vars = vars || {};
+	this.attr = attr || {};
+	this.fn = fn || function(){};
+	boxs[id] = this;
+	initialize(this);
+}
+box.prototype.remove = function(){
+	delete boxs[this.id];
+}
+//记忆变量
+var mems = {};
+function mem(name, value){
+	this.first = value;
+	this.last = undefined;
+	this.value = value;
+	mems[name] = this;
+}
+mem.prototype.set = function(newValue, NotUpdate){
+	this.last = this.value;
+	this.value = newValue;
+}
+mem.prototype.get = function(fn){
+	if(this.last != this.value){
+		fn(this.last, this.value);
+	}
+}
+mem.prototype.update = function(){
+	this.last = this.value
+}
+mem.prototype.remove = function(){
+	delete mems[this.name];
 }
