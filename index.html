@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="utf-8">
 <head>
 	<meta charset="utf-8" />
 	<meta name="description" content="Ran's blog">
@@ -37,13 +37,21 @@ html, body{
 .nav_img{
 	position: absolute;
 	height: 100%;
-	image-rendering: -moz-crisp-edges;
-	image-rendering: -webkit-optimize-contrast;
-	image-rendering: pixelated;
-	-ms-interpolation-mode: nearest-neighbor;
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: pixelated;
 }
 .nav_title{
 	position: relative;
+}
+
+iframe{
+	border: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
 }
 
 
@@ -52,71 +60,46 @@ html, body{
 <body>
 	
 <canvas id="home"></canvas>
-
 <img id="portrait" src="img/RanC.png" />
 
 <script src="js/common.js"></script>
 <script>
 	
-	
-//元素盒
-var boxs = {};
-function box(id, vars, attr, fn, initialize){
-	this.id = id;
-	this.vars = vars || {};
-	this.attr = attr || {};
-	this.fn = fn || function(){};
-	boxs[id] = this;
-	initialize(this);
-}
-box.prototype.remove = function(){
-	delete boxs[this.id];
-}
-//记忆变量
-var mems = {};
-function mem(name, value){
-	this.first = value;
-	this.last = undefined;
-	this.value = value;
-	mems[name] = this;
-}
-mem.prototype.set = function(newValue, NotUpdate){
-	this.last = this.value;
-	this.value = newValue;
-}
-mem.prototype.get = function(fn){
-	if(this.last != this.value){
-		fn(this.last, this.value);
-	}
-}
-mem.prototype.update = function(){
-	this.last = this.value
-}
-mem.prototype.remove = function(){
-	delete mems[this.name];
-}
-
-function getColor(){
-	var rgb = SHexToARgb(theme.value);
-	return {
-		main: ARgbToSRgb(rgb),
-		vice: ARgbToSRgb(generateSecondaryColor(rgb)),
-		anti: ARgbToSRgb(generateContrastingColor(rgb))
-	}
-}
-
-////////////////////////////////
-
-	
-var theme = new mem("theme", getCookie("theme") || "#EEE");
-var color = getColor();
-var FPS = +getCookie("fps") || 60;
-var SF = +getCookie("sf") || 1;
-var lang = +getCookie("lang") || 0;
+var theme = new mem("theme", getCookie("theme") || "#EEE");  //主题颜色
+var color = getColor(theme.value);  //配色
+var FPS = +getCookie("fps") || 60;  //动画帧数
+var SF = +getCookie("sf") || 1;  //分辨率
+var lang = +getCookie("lang") || 0;  //语言
 var PI = Math.PI;
 var DPI = 2 * PI;
 var HPI = 0.5 * PI;
 var DPR = getDevicePixelRatio() * SF;
+var startTime = +new Date();
+var waitTime = 10;  //10s后自动关闭加载界面
+var isLoading = true;  //是否在加载界面
+var iframe = {ifr: undefined, opacity: 0, aniTime: 0.2, dir: 1};
+function openIframe(src){
+	iframe.dir = 1;
+	var ifr = document.createElement("iframe");
+	iframe.ifr = ifr;
+	ifr.setAttribute("frameBorder", "0");
+	ifr.width = "100%";
+	ifr.height = "100%";
+	ifr.src = src;
+	iframe.opacity = 0;
+	document.body.appendChild(ifr);
+}
+function closeIframe(){
+	iframe.dir = -1;
+	var ifr = iframe.ifr;
+}
+window.onmessage = function(e){
+	switch(e.data){
+		case "closeIframe":
+			closeIframe();
+			break;
+	}
+}
 
 var w = h = mx = my = 0;
 var canvas = document.getElementById("home");
@@ -132,12 +115,18 @@ function initCav(){
 }
 initCav();
 mx = 0.5 * w; my = 0.5 * h;
-window.onmousemove = function(e){
+function pointer(e){
 	e = e || window.event;
 	var pos = e.touches && e.touches.length ? e.touches[0] : e;
 	mx = pos.clientX || 0;
 	my = pos.clientY || 0;
 }
+if(window.onpointermove){
+	window.onpointermove = pointer;
+}else{
+	window.onmousemove = pointer;
+}
+
 
 new box("loading", {
 	size: 200,  //loading大小
@@ -213,10 +202,30 @@ function render(){
 	if(time) delta = (newTime - time) * 0.001;
 	time = newTime;
 	
-	//判断主题是否改变
-	theme.get(function(){color = getColor()});
+	//自动关闭加载界面
+	if(isLoading && (newTime - startTime) * 1e3 > waitTime && window.onload){
+		window.onload();
+	}
 	
+	//判断主题是否改变
+	theme.get(function(){color = getColor(theme.value)});
+	
+	//初始化画布
 	initCav();
+	
+	//处理iframe
+	if(iframe.ifr){
+		iframe.opacity += delta / iframe.aniTime * iframe.dir;  //iframe透明度
+		iframe.ifr.style.opacity = iframe.opacity;
+		if(iframe.opacity >= 1){  //完全进入iframe 停止渲染主页
+			iframe.opacity = 1;
+			return ;
+		}else if(iframe.opacity <= 0){  //完全退出iframe 删除iframe
+			if(iframe.ifr && iframe.ifr.parentNode) iframe.ifr.parentNode.removeChild(iframe.ifr);
+			iframe.ifr = undefined;
+			iframe.opacity = 0;
+		}
+	}
 	
 	//渲染box
 	for(var key in boxs){
@@ -228,13 +237,13 @@ function render(){
 // setInterval(render, 1000);
 setInterval(render, 1000 / FPS);
 
-
 </script>
 <script src="js/ui.js"></script>
 <script>
-	
-window.onload = ui_homeAL;
+window.onload = function(){
+	ui_homeAL();
+	isLoading = false;
+};
 </script>
-
 </body>
 </html>
