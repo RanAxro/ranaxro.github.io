@@ -203,9 +203,9 @@ function render(){
 	time = newTime;
 	
 	//自动关闭加载界面
-	//if(isLoading && (newTime - startTime) * 1e-3 > waitTime && window.onload){
+	if(isLoading && (newTime - startTime) * 1e-3 > waitTime && window.onload){
 		//window.onload();
-	//}
+	}
 	
 	//判断主题是否改变
 	theme.get(function(){color = getColor(theme.value)});
@@ -241,13 +241,13 @@ setInterval(render, 1000 / FPS);
 <script src="js/ui.js"></script>
 <script>
 window.onload = function(){
-	console.log("a")
 	ui_homeAL();
 	isLoading = false;
 };
 </script>
 </body>
 </html>
+
 
 
 
