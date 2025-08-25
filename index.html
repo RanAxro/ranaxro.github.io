@@ -203,7 +203,7 @@ function render(){
 	time = newTime;
 	
 	//自动关闭加载界面
-	if(isLoading && (newTime - startTime) * 1e3 > waitTime && window.onload){
+	if(isLoading && (newTime - startTime) * 1e-3 > waitTime && window.onload){
 		window.onload();
 	}
 	
@@ -247,3 +247,4 @@ window.onload = function(){
 </script>
 </body>
 </html>
+
