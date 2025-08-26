@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<pre id=e style="width:32ch;line-height:16px;font-size:16px;background:#DDD;font-family:monospace">
+</pre><script>let s=16,q=256,d=[0],v=1,r=Math.random,f=~~(r()*q),k={87:240,65:15,83:s,68:1},o,i;
+setInterval(_=>{o=Array(q).fill("  ");d.unshift((((~~(d[0]/s))+(~~(v/s)))%s)*s+(d[0]%s+v%s)%s);
+d[0]==f?f=~~(r()*q):d.pop();d.forEach(i=>o[i]="○");o[d[0]]="●";o[f]="▲";for(i=1;i<=s;)o.splice(
+17*i++-1,0,"\n");e.innerHTML=o.join("")},q);onkeyup=E=>v=k[E.keyCode]||v</script>wasd控制方向
