@@ -1,0 +1,230 @@
+<html>
+<head>
+<title>奥运会</title>
+<style type="text/css">
+::-webkit-scrollbar {
+  display:none;
+}
+*{
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  overflow-x:hidden;
+  overflow-y:hidden;
+}
+
+*{
+ padding:0px;
+ margin:0px;
+ border:none;
+ overflow:auto;
+}
+
+#body{
+ height:calc(100% + 10cm);
+ transition:all 0.4s;
+}
+
+#top{
+ width:100%;
+ height:auto;
+ position:absolute;
+}
+
+#top-important{
+ width:100%;
+ height:0cm;
+ opacity:0;
+ background:url(image/div.png);
+ background-size:auto 100%;
+ overflow:hidden;
+ transition:all 0.4s;
+}
+
+#top-nav{
+ width:100%;
+ height:1cm;
+}
+
+#top-content{
+ width:calc(100% - 4cm);
+ height:7cm;
+ margin:2cm 2cm 0cm 2cm;
+}
+#top-content-left{
+ width:calc(100% - 13cm);
+ height:100%;
+ float:left;
+}
+#top-content-right{
+ width:13cm;
+ height:100%;
+ float:left;
+}
+
+#top-font-h{
+ color:#FFF;
+ font-size:0.85cm;
+ margin:1cm 0cm 0cm 0cm;
+}
+#top-font-p{
+ color:#FFF;
+ font-size:0.4cm;
+ margin:1cm 0cm 0cm 0cm;
+}
+#top-img{
+ width:11.5cm;
+ float:right;
+}
+
+
+#center{
+ width:100%;
+ height:1cm;
+ background:#A41629;
+ float:bottom;
+}
+
+#center input[type="button"]{
+ width:3cm;
+ height:100%;
+ color:#FFF;
+ font-size:0.5cm;
+ background:#A41629;
+ outline:none;
+ cursor:pointer;
+ float:right;
+ transition:all 0.4s;
+}
+
+#iframe{
+ width:100%;
+ height:100cm;
+ margin:11cm 0cm 0cm 0cm;
+ opacity:0.2;
+ transition:all 0.8s;
+}
+
+#iframe iframe{
+ width:100%;
+ height:100%;
+}
+
+</style>
+</head>
+<body id="body">
+
+<div id="top">
+  <div id="top-important">
+    <div id="top-content">
+      <div id="top-content-left">
+        <p id="top-font-h"><b>2020东京</b>奥运会</p>
+        <p id="top-font-p">第32届夏季奥林匹克运动会又称2020年东京奥运会，于2021年7月23日至8月8日在日本首都东京举行，本届奥运会赛事均以空场形式举办。</p>
+      </div>
+      <div id="top-content-right">
+        <img src="image/top-img.png" id="top-img">
+      </div>
+    </div>
+  </div>
+  <div id="top-nav">
+    <div id="center">
+      <input type="button" id="3" onClick="controlvalue(3)" value="关于奥运会">
+      <input type="button" id="2" onClick="controlvalue(2)" value="东京奥运会">
+      <input type="button" id="1" onClick="controlvalue(1)" value="主页">
+    </div>
+  </div>
+</div>
+<div id="iframe">
+  <iframe id="iframe-1" src="child/1.html"></iframe>
+  <iframe id="iframe-2" src="child/2.html"></iframe>
+  <iframe id="iframe-3" src="child/3.html"></iframe>
+</div>
+
+<script type="text/javascript">
+function controlvalue(value){
+ if(value == 1){
+  document.getElementById("body").style.height = "calc(100% + 10cm)";
+  document.getElementById("top-important").style.height = "10cm";
+  document.getElementById("top-important").style.opacity = "1";
+  animation(1);
+  document.getElementById("1").style.background = "#8F1629";
+  document.getElementById("2").style.background = "#A41629";
+  document.getElementById("3").style.background = "#A41629";
+  document.getElementById("iframe-1").style.display = "block";
+  document.getElementById("iframe-2").style.display = "none";
+  document.getElementById("iframe-3").style.display = "none";
+ }
+ else if(value == 2){
+  document.getElementById("body").style.height = "100%";
+  document.getElementById("top-important").style.height = "0cm";
+  document.getElementById("top-important").style.opacity = "0";
+  animation(2);
+  document.getElementById("1").style.background = "#A41629";
+  document.getElementById("2").style.background = "#8F1629";
+  document.getElementById("3").style.background = "#A41629";
+  document.getElementById("iframe-1").style.display = "none";
+  document.getElementById("iframe-2").style.display = "block";
+  document.getElementById("iframe-3").style.display = "none";
+ }
+ else if(value == 3){
+  document.getElementById("body").style.height = "100%";
+  document.getElementById("top-important").style.height = "0cm";
+  document.getElementById("top-important").style.opacity = "0";
+  animation(3);
+  document.getElementById("1").style.background = "#A41629";
+  document.getElementById("2").style.background = "#A41629";
+  document.getElementById("3").style.background = "#8F1629";
+  document.getElementById("iframe-1").style.display = "none";
+  document.getElementById("iframe-2").style.display = "none";
+  document.getElementById("iframe-3").style.display = "block";
+ }
+}
+
+function animation(value){
+ if(value == 1){
+  document.getElementById("iframe").style.transition = "none";
+  document.getElementById("iframe").style.margin = "100% 0cm 0cm 0cm";
+  document.getElementById("iframe").style.opacity = "0.2";
+  setTimeout(function(){
+   document.getElementById("iframe").style.transition = "all 0.8s"
+  },1);
+  setTimeout(function(){
+   document.getElementById("iframe").style.margin = "11cm 0cm 0cm 0cm";
+   document.getElementById("iframe").style.height = "calc(100% - 11cm)";
+   document.getElementById("iframe").style.opacity = "1";
+  },2);
+ }
+ else if(value == 2){
+  document.getElementById("iframe").style.transition = "none";
+  document.getElementById("iframe").style.margin = "100% 0cm 0cm 0cm";
+  document.getElementById("iframe").style.opacity = "0.2";
+  setTimeout(function(){
+   document.getElementById("iframe").style.transition = "all 0.8s"
+  },1);
+  setTimeout(function(){
+   document.getElementById("iframe").style.margin = "1cm 0cm 0cm 0cm";
+   document.getElementById("iframe").style.height = "calc(100% - 1cm)";
+   document.getElementById("iframe").style.opacity = "1";
+  },2);
+ }
+ else if(value == 3){
+  document.getElementById("iframe").style.transition = "none";
+  document.getElementById("iframe").style.margin = "100% 0cm 0cm 0cm";
+  document.getElementById("iframe").style.opacity = "0.2";
+  setTimeout(function(){
+   document.getElementById("iframe").style.transition = "all 0.8s"
+  },1);
+  setTimeout(function(){
+  document.getElementById("iframe").style.margin = "1cm 0cm 0cm 0cm";
+  document.getElementById("iframe").style.height = "calc(100% - 1cm)";
+   document.getElementById("iframe").style.opacity = "1";
+  },2);
+ }
+}
+
+window.onload = function(){
+  controlvalue(1)
+}
+</script>
+
+</body>
+</html>
