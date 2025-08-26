@@ -543,3 +543,56 @@ mem.prototype.update = function(){
 mem.prototype.remove = function(){
 	delete mems[this.name];
 }
+
+
+//
+function getLang(){
+	var lang = getCookie("lang")
+	if(!lang){
+		lang = (
+			navigator.language || 
+			navigator.browserLanguage || 
+			navigator.userLanguage || 
+			navigator.systemLanguage
+		).toLowerCase().substr(0, 2) == "zh" ? 0 : 1
+	}
+ return +lang;
+}
+
+
+function decompressBinary(str) {
+  if (!str) return "";
+
+  var arr = str.split('-');
+  var res = [];
+  var i, j;
+
+  for(i = 0; i < arr.length; i += 2){
+    var bit   = arr[i];
+    var count = parseInt(arr[i + 1], 10) || 0;
+		
+    for(j = 0; j < count; j++){
+      res[res.length] = bit;
+    }
+  }
+  return res.join("");
+}
+//将二进制icon转换为img
+function convertImgData(data){
+	var bits = decompressBinary(data);
+	
+	var canvas = document.createElement("canvas");
+	canvas.width = 16;
+	canvas.height = 16;
+	var ctx = canvas.getContext("2d");
+	
+	var x, y;
+	for(var i = 0; i < 256; i++){
+		x = i % 16;
+		y = (i / 16) | 0;
+		if(bits.charAt(i) == "0") continue;
+		ctx.fillStyle = color.anti;
+		ctx.fillRect(x, y, 1, 1);
+	}
+	return canvas.toDataURL("image/png");
+}
