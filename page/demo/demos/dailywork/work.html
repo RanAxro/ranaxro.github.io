@@ -1,0 +1,601 @@
+﻿
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Work</title>
+<style type="text/css">
+::webkit-scrollbar{
+ display:none;
+}
+*{
+ scrollbar-width;none;
+ -ms-overflow-style:none;
+ overflow-x:hidden;
+ overflow-y:hidden;
+}
+
+::selection {
+ background: #a35211227;
+}
+@font-face{
+ font-family:"";
+ src:url("");
+}
+
+*{
+ padding:0px;
+ margin:0px;
+ border:0px;
+ font-size:Helvetica;
+ transition:all 0.3s ease-in-out;
+}
+
+:root{
+ background:#333;
+ 
+ --back:#333;
+ --titlecolor:#eee;
+ --pcolor:#999;
+ --bordercolor:#555;
+ --display:none;
+}
+
+html,body{
+ height:100%;
+ background:#333;
+ overflow:auto;
+}
+
+@media screen and (max-width:480px){
+ body{
+  width:100%;
+ }
+ #toolbox{
+  right:-50px;
+ }
+ #setting{
+  right:0.3cm;
+ }
+ @keyframes toolloading{
+  0%{right:-100px}
+  100%{right:-50px}
+}
+}
+@media screen and (min-width:481px){
+ body{
+  width:480px;
+ }
+ #toolbox{
+  right:calc(50% - 290px)
+ }
+ #setting{
+  right:calc(50% - 240px + 0.3cm)
+ }
+ @keyframes toolloading{
+  0%{right:-100px}
+  100%{right:calc(50% - 290px)}
+ }
+}
+
+body{
+ padding:20px 0px;
+ background:var(--back);
+ margin:auto;
+ box-shadow:0px 0px 10px #000;
+}
+
+#loading{
+ width:150px;
+ height:150px;
+ position:fixed;
+ top:calc(50% - 75px);
+ left:calc(50% - 75px);
+ border-radius:50%;
+ background:var(--back);
+ background:linear-gradient(45deg,transparent,transparent 40%,#0cf);
+ animation:loading 1s linear infinite;
+ transition:all 0.5s;
+}
+
+@keyframes loading{
+ 0%
+ {
+  transform:rotate(0deg);
+ }
+ 100%
+ {
+  transform:rotate(360deg);
+ }
+}
+
+#loading:before{
+ content:"";
+ position:absolute;
+ top:6px;
+ left:6px;
+ right:6px;
+ bottom:6px;
+ background:var(--back);
+ border-radius:50%;
+ z-index:1000;
+}
+
+#loading:after{
+ content:"";
+ position:absolute;
+ top:0px;
+ left:0px;
+ right:0px;
+ bottom:0px;
+ background:var(--back);
+ border-radius:50%;
+ background:linear-gradient(45deg,transparent,transparent 40%,#0cf);
+ z-index:1000;
+ z-index:1;
+ filter:blur(30px);
+}
+
+#loadingfont{
+ width:150px;
+ height:150px;
+ position:fixed;
+ top:calc(50% - 75px);
+ left:calc(50% - 75px);
+ color:#0cf;
+ font-size:70px;
+ text-align:center;
+ text-shadow:0px 0px 20px #0cf;
+ line-height:150px;
+ animation:loadingfont 1s linear;
+ transition:all 0.5s;
+}
+
+@keyframes loadingfont{
+ 0%{
+  opacity:0;
+ }
+ 30%
+ {
+  opacity:0;
+ }
+ 100%
+ {
+  opacity:1;
+ }
+}
+
+
+
+.work{
+ display:var(--display);
+ width:90%;
+ min-height:6cm;
+ max-height:auto;
+ background:var(--back);
+ border-bottom:1px solid var(--bordercolor);
+ margin:0px auto 25px;
+}
+div[class$="work"]{
+ animation:workloading 1s ease-in-out;
+}
+@keyframes workloading{
+ 0%
+ {
+  margin:3cm auto 25px;
+  opacity:0;
+ }
+ 100%
+ {
+  margin:0px auto 25px;
+  opacity:1;
+ }
+}
+.work p{
+ font-size:1cm;
+ color:var(--titlecolor);
+}
+.work p input[type="button"]{
+ display:none;
+}
+.work li{
+ font-size:0.5cm;
+ color:var(--pcolor);
+ margin:10px;
+ margin-left:20px;
+}
+.work li p{
+ width:calc(100% - 1cm);
+ height:100%;
+ font-size:0.5cm;
+ color:var(--pcolor);
+ float:right;
+}
+.work img{
+ display:none;
+}
+.work h3{
+ font-width:normal;
+ color:var(--pcolor);
+ margin-left:15px;
+}
+
+.openwork{
+ width:100%;
+ min-height:100vh;
+ max-height:100vh;
+ background:var(--back);
+ overflow:auto;
+ margin:auto;
+}
+.openwork p{
+ font-size:1cm;
+ color:var(--titlecolor);
+}
+.openwork p input[type="button"]{
+ width:1cm;
+ line-height:1.3cm;
+ float:right;
+ background:var(--back);
+ color:var(--titlrcolor);
+ font-size:0.5cm;
+ text-align:center;
+ outline:none;
+ animation:buttonloading 0.3s ease-in-out;
+}
+
+@keyframes buttonloading{
+ 0%
+ {
+  transform:rotateZ(0deg);
+  opacity:0;
+ }
+ 100%
+ {
+  transform:rotateZ(-90deg);
+  opacity:1;
+ }
+}
+
+.openwork li{
+ height:0px;
+ font-size:0cm;
+ color:var(--pcolor);
+ margin-left:20px;
+ opacity:0;
+}
+.openwork li p{
+ width:calc(100% - 1cm);
+ height:100%;
+ font-size:0cm;
+ color:var(--pcolor);
+ float:right;
+ opacity:0;
+}
+.openwork img{
+ width:96%;
+ margin:2%;
+ border-radius:10px;
+ filter:invert(80%);
+ animation:imgloading 0.3s ease-in-out;
+}
+
+@keyframes imgloading{
+ 0%
+ {
+  opacity:0;
+ }
+ 100%
+ {
+  opacity:1;
+ }
+}
+.openwork h3{
+ font-width:normal;
+ color:var(--pcolor);
+}
+
+#toolbox{
+ transform:rotateZ(-90deg);
+ position:fixed;
+ top:calc(1cm + 75px);
+ z-index:2;
+ display:none;
+ animation:toolloading 0.3s ease-in-out;
+}
+
+#toolbox .range{
+ -webkit-appearance:none;
+ width:120px;
+ height:4px;
+ background:#888;
+ border-radius:2px;
+ outline:none;
+}
+#toolbox .range::-webkit-slider-thumb{
+ -webkit-appearance:none;
+ width:14px;
+ height:14px;
+ border-radius:7px;
+ background:#eee;
+ box-shadow:0px 0px 1px var(--pcolor);
+}
+#toolbox .button{
+ width:30px;
+ height:30px;
+ outline:none;
+ background:rgba(0,0,0,0);
+ color:var(--titlecolor);
+ text-align:right;
+ font-size:20px;
+ transform:rotateZ(90deg);
+}
+
+#setting{
+ display:var(--display);
+ padding:0px 10px;
+ position:fixed;
+ top:0.3cm;
+ background:var(--back);
+ border-radius:0.2cm;
+ overflow:hidden;
+ z-index:2;
+ animation:settingloading 0.5s ease-in-out;
+}
+
+@keyframes settingloading{
+ 0%
+ {
+  opacity:0;
+  top:1cm;
+ }
+ 100%
+ {
+  opacity:1;
+  top:0.3cm;
+ }
+}
+
+.setting{
+ width:1cm;
+ height:1cm;
+}
+#setting input[type="button"]{
+ width:100%;
+ height:1cm;
+ background:var(--back);
+ font-size:0.7cm;
+ text-align:center;
+ color:var(--titlecolor);
+ outline:none;
+}
+.opensetting{
+ width:2cm;
+ height:5cm;
+ box-shadow:0px 0px 5px var(--titlecolor);
+}
+
+</style>
+</head>
+<body id="body">
+
+
+<!-- 加载 -->
+<div id="loading"></div>
+<div id="loadingfont">W</div>
+
+<!-- 设置 -->
+<div id="setting" class="setting">
+  <input type="button" value="☰" onclick="setting('switch')">
+  <input type="button" id="setback" value="○" onclick="setting('back')">
+  <input type="button" value="+" id="addwork" onclick="setting('wsubject')">
+  <input type="button" value="❏" id="copy" onclick="setting('copy')">
+</div>
+
+<div id="toolbox">
+<input class="button" type="button" value="◐" id="setbutton" onclick="changebutton()">
+<input class="range" type="range" min="0" max="100" step="1" value="100" id="setimgsize" oninput="changeimg()">
+</div>
+
+<script type="text/javascript" src="work/workcontent.js"></script>
+<script type="text/javascript">
+
+
+//读取作业
+function inwork(value){
+for(var j = 0;j < worksubject[value].length;j++){
+ var div = document.createElement("div");
+ div.classList.add("work");
+ div.id = worksubject[value][j]["en"];
+ div.innerHTML = "<p>" + worksubject[value][j]["cn"] + "<input type=\"button\" value=\"╳\" onclick=\"controlwork('" + worksubject[value][j]["en"] + "')\">";
+ document.getElementById("body").appendChild(div);
+ 
+ for(var i in worksubject[value][j]["li"]){
+ var li = document.createElement("li");
+ var lisrc = worksubject[value][j]["en"];
+ li.innerHTML = "<p onclick=\"controlwork('" + worksubject[value][j]["en"] + "')\">" + worksubject[value][j]["li"][i] + ""
+ div.appendChild(li);
+}
+
+ if(worksubject[value][j]["img"].length == 0){
+  var h3 = document.createElement("h3");
+  h3.innerHTML = "暂无内容！";
+  div.appendChild(h3);
+ }else{
+  for(var i in worksubject[value][j]["img"]){
+   var img = document.createElement("img");
+   img.src =  worksubject[value][j]["img"][i];
+   div.appendChild(img);
+  }
+ }
+}
+}
+
+//点击全屏
+function controlwork(workvalue){if(document.getElementById(workvalue).className == "work"){
+ var thetop = document.getElementById(workvalue).getBoundingClientRect().top;
+ document.getElementById(workvalue).classList.add("openwork");
+ document.getElementById(workvalue).classList.remove("work");
+ document.getElementById(workvalue).style.transform = "translateY(" + (- thetop) + "px)";
+ 
+ document.getElementById("html").style.overflow = "hidden";
+ document.getElementById("body").style.overflow = "hidden";
+ 
+ document.getElementById("toolbox").style.display = "block";
+ document.getElementById("setting").style.display = "none";
+}else{
+ var thetop = document.getElementById(workvalue).offsetTop;
+ document.getElementById(workvalue).classList.add("work");
+ document.getElementById(workvalue).classList.remove("openwork");
+ document.getElementById(workvalue).style.transform = "translateY(0px)";
+
+ document.getElementById("html").style.overflow = "auto";
+ document.getElementById("body").style.overflow = "auto";
+ 
+ document.getElementById("toolbox").style.display = "none";
+ document.getElementById("setting").style.display = "block";
+}
+}
+
+//设置图片大小
+function changeimg(){
+  var imgsize = document.getElementById("setimgsize").value;
+  var getimg = document.getElementsByTagName("img");
+ 
+ for(i = 0;i < getimg.length;i++){
+  getimg[i].style.width = (196 - imgsize) + "%";
+ }
+}
+
+//设置图片颜色
+function changebutton(){
+ var getimg = document.getElementsByTagName("img");
+
+ if(getimg[0].style.filter == "invert(80%)"){
+  for(i = 0;i < getimg.length;i++){
+   getimg[i].style.filter = "invert(6.5%)"
+   document.getElementById("setbutton").style.color = "#333";
+  }
+ }else{
+  for(i = 0;i < getimg.length;i++){
+   getimg[i].style.filter = "invert(80%)"
+   document.getElementById("setbutton").style.color = "#eee";
+  }
+ }
+}
+
+
+//设置背景颜色
+function back(value){
+ if(value == "light"){
+  document.documentElement.style.setProperty("--back","#eee");
+  document.documentElement.style.setProperty("--titlecolor","#333");
+  document.documentElement.style.setProperty("--pcolor","#555");
+  document.documentElement.style.setProperty("--bordercolor","#ccc");
+ }
+ else if(value == "dark"){
+  document.documentElement.style.setProperty("--back","#333");
+  document.documentElement.style.setProperty("--titlecolor","#eee");
+  document.documentElement.style.setProperty("--pcolor","#999");
+  document.documentElement.style.setProperty("--bordercolor","#555");
+ }
+}
+
+var backcolor = getComputedStyle(document.documentElement).getPropertyValue("--back");
+var getimg = document.getElementsByTagName("img");
+if(backcolor == "#eee"){
+ for(i = 0;i < getimg.length;i++){
+  getimg[i].style.filter = "invert(6.5%)"
+  document.getElementById("setbutton").style.color = "#333";
+ }
+}else{
+ for(i = 0;i < getimg.length;i++){
+  getimg[i].style.filter = "invert(80%)"
+  document.getElementById("setbutton").style.color = "#eee";
+ }
+}
+
+//设置
+function setting(value){
+//展开与闭合
+if(value == "switch"){
+var getsetting = document.getElementById("setting");
+ if(getsetting.className == "setting"){
+  getsetting.classList.add("opensetting");
+  getsetting.classList.remove("setting");
+ }else{
+  getsetting.classList.add("setting");
+  getsetting.classList.remove("opensetting");
+ }
+}
+//背景
+else if(value == "back"){
+ if(getComputedStyle(document.documentElement).getPropertyValue("--back") == "#333"){
+  back("light");
+  setting("switch");
+  document.getElementById("setback").value = "☾";
+  
+  var getimg = document.getElementsByTagName("img");
+ for(i = 0;i < getimg.length;i++){
+  getimg[i].style.filter = "invert(6.5%)"
+  document.getElementById("setbutton").style.color = "#333";
+ }
+ }else{
+  back("dark")
+  setting("switch");
+  document.getElementById("setback").value = "○";
+  
+  var getimg = document.getElementsByTagName("img");
+ for(i = 0;i < getimg.length;i++){
+  getimg[i].style.filter = "invert(80%)"
+  document.getElementById("setbutton").style.color = "#eee";
+ }
+ }
+}
+//作业
+else if(value == "wsubject"){
+ workuid = prompt("输入作业uid","");
+ if(workuid == null){}else{
+  if(workuid in worksubject){
+    var getwork = document.getElementsByClassName("work");
+    for(i = getwork.length - 1;i >= 0;i--){
+     getwork[i].remove();
+    }
+    inwork(workuid)
+    setting("switch");
+  }else{
+   alert("无法找到内容或uid错误！")
+  }
+ }
+}
+
+//复制作业
+else if(value == "copy"){}
+}
+
+//加载完成
+{
+setTimeout(function(){closeloading1()},1100);
+function closeloading1(){
+ document.getElementById("loading").style.opacity = "0";
+ document.getElementById("loadingfont").style.opacity = "0";
+ setTimeout(function(){closeloading2()},500)
+}
+function closeloading2(){
+ document.getElementById("loading").style.display = "none";
+ document.getElementById("loadingfont").style.display = "none";
+ document.documentElement.style.setProperty("--display","block");
+ 
+ //导入
+  for(var key in worksubject){
+   openuid = key
+  }
+  inwork(openuid);
+ }
+}
+
+</script>
+
+</body>
+</html>
