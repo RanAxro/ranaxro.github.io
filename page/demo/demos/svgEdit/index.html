@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>RanTool</title>
+<style type="text/css">
+*{
+  border: none;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+html, body{
+  width: 100%;
+  height: 100%;
+}
+#drag{
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  border: 5px solid;
+  border-color: #CCC;
+  border-radius: 18px;
+  width: 90%;
+  height: 90%;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#output{
+  border: 2px solid #333;
+  width: calc(100% - 20px);
+  min-height: calc(100% - 20px);
+  background: #EEE;
+}
+
+#panel{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #EEE;
+  display: none;
+}
+.option{
+  border-radius: 10px;
+  border: 3px solid #BBB;
+  padding: 5px;
+  margin: 10px 0;
+  width: calc(100% - 20px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 10px;
+}
+.option p{
+  width: 100%;
+}
+.option label{
+  display: inline-block;
+}
+.option input{
+  display: none;
+}
+.option div{
+  border-radius: 8px;
+  padding: 0 10px;
+  width: auto;
+  height: 40px;
+  background: #DDD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+}
+.option input:checked + div{
+  background: #CCC;
+}
+
+</style>
+</head>
+<body>
+
+<div id="drag">
+  点击上传或拖拽svg文件到此处
+</div>
+<div id="panel">
+  <div id="imgInfo">name</div>
+  <div id="imgSize" class="option">
+    <p>图像大小</p>
+    <label for="Sori"><input type="radio" name="size" id="Sori" checked /><div>原始大小</div></label>
+    <label for="Sxhalf"><input type="radio" name="size" id="Sxhalf" /><div>x0.5</div></label>
+    <label for="Sxdouble"><input type="radio" name="size" id="Sxdouble" /><div>x2</div></label>
+    <label for="Sxtriple"><input type="radio" name="size" id="Sxtriple" /><div>x3</div></label>
+    <label for="S1k"><input type="radio" name="size" id="S1k" /><div>1k</div></label>
+    <label for="S2k"><input type="radio" name="size" id="S2k" /><div>2k</div></label>
+    <label for="S4k"><input type="radio" name="size" id="S4k" /><div>4k</div></label>
+  </div>
+  <div id="imgBorder" class="option">
+    <p>图像边框</p>
+    <label for="BDnone"><input type="radio" name="border" id="BDnone" checked /><div>none</div></label>
+    <label for="BD30"><input type="radio" name="border" id="BD30" /><div>30</div></label>
+    <label for="BD60"><input type="radio" name="border" id="BD60" /><div>60</div></label>
+  </div>
+  <div id="imgBack" class="option">
+    <p>图像背景</p>
+    <label for="Bnone"><input type="radio" name="back" id="Bnone" checked /><div>none</div></label>
+    <label for="Bwhite"><input type="radio" name="back" id="Bwhite" /><div>white</div></label>
+  </div>
+  <canvas id="output"></canvas>
+</div>
+
+
+<script>
+
+//分辨率表格
+let sizeTable;
+//边框表格
+let borderTable = {"BDnone": 0, "BD30":30, "BD60":60}
+//图像数据
+let img;
+
+let canvas = document.getElementById("output");
+let ctx = canvas.getContext('2d');
+
+let Edrag = document.getElementById("drag");
+let Epanel = document.getElementById("panel");
+let EimgInfo = document.getElementById("imgInfo");
+
+Edrag.addEventListener("dragenter", function(e){
+  e.preventDefault();
+  Edrag.style.borderColor = "#888";
+});
+Edrag.addEventListener("dragleave", function(e){
+  e.preventDefault();
+  Edrag.style.borderColor = "#CCC";
+});
+Edrag.addEventListener("dragover", function(e){
+  e.preventDefault();
+});
+Edrag.addEventListener("drop", function(e){
+  e.preventDefault();
+  Edrag.style.borderColor = "#CCC";
+  //获取拖入的文件
+  let file = e.dataTransfer.files[0];
+  let reader = new FileReader();
+  reader.readAsDataURL(file);
+  //文件读取被中断
+  reader.onabort = function(){ alert("文件读取被中断") };
+  //文件读取失败
+  reader.onerror = function(){ alert("文件读取失败") };
+  //文件读取完成
+  reader.onload = function(){
+    img = new Image();
+    img.src = reader.result;
+    //图像加载完成
+    img.onload = function(){
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      fileLoad(file.name, img.width, img.height);
+    }
+  }
+});
+
+//加载信息
+function fileLoad(fileName, imgWidth, imgHeight){
+  //去除文件名后缀
+  fileName = fileName.substring(0, fileName.lastIndexOf("."));
+  EimgInfo.innerText = `文件名:${ fileName }  图像大小${imgWidth}x${imgHeight}`;
+  //生成分辨率表格
+  sizeTable = new writesizeTable(imgWidth, imgHeight);
+  //加载信息到元素
+  let keys = Object.keys(sizeTable);
+  for(let i = 0; i < keys.length; i++){
+    document.getElementById(keys[i]).nextElementSibling.innerText += `(${sizeTable[keys[i]][0]}x${sizeTable[keys[i]][1]})`;
+  }
+  
+  Epanel.style.display = "block";
+}
+
+//分辨率表格
+function writesizeTable(width, height){
+  this.Sori = [width, height];
+  this.Sxhalf = [Math.ceil(width/2), Math.ceil(height/2)];
+  this.Sxdouble = [width*2, height*2];
+  this.Sxtriple = [width*3, height*3];
+  this.S1k = [1024, Math.ceil(Math.ceil(1024*height/width))];
+  this.S2k = [2048, Math.ceil(Math.ceil(2048*height/width))];
+  this.S4k = [4096, Math.ceil(Math.ceil(4096*height/width))];
+}
+
+//刷新图像
+let Esize = document.getElementsByName("size");
+let Eborder = document.getElementsByName("border");
+let Eback = document.getElementsByName("back");
+//
+function flash(){
+  //绘制数据
+  let size, border;
+  //获取绘制大小
+  for(let i = 0; i < Esize.length; i++){
+    if(Esize[i].checked){
+      size = sizeTable[Esize[i].id];
+      break;
+    }
+  }
+  //获取绘制边框
+  for(let i = 0; i < Eborder.length; i++){
+    if(Eborder[i].checked){
+      border = borderTable[Eborder[i].id];
+      break;
+    }
+  }
+  
+  canvas.width = size[0] + 2 * border;
+  canvas.height = size[1] + 2 * border;
+  ctx.fillStyle = "#FFF";
+  if( Eback[1].checked ) ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, border, border, size[0], size[1]);
+}
+
+//添加监听事件
+for(let i = 0; i < Esize.length; i++){
+  Esize[i].addEventListener("click", flash);
+}
+for(let i = 0; i < Eborder.length; i++){
+  Eborder[i].addEventListener("click", flash);
+}
+for(let i = 0; i < Eback.length; i++){
+  Eback[i].addEventListener("click", flash);
+}
+
+
+</script>
+</body>
+</html>
