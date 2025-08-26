@@ -23,6 +23,7 @@ html, body{
 #home{
 	width: 100%;
 	height: 100%;
+	cursor: crosshair;
 }
 
 #portrait{
@@ -33,6 +34,7 @@ html, body{
 
 .nav_box{
 	position: fixed;
+	cursor: pointer;
 }
 .nav_img{
 	position: absolute;
@@ -69,7 +71,7 @@ var theme = new mem("theme", getCookie("theme") || "#EEE");  //主题颜色
 var color = getColor(theme.value);  //配色
 var FPS = +getCookie("fps") || 60;  //动画帧数
 var SF = +getCookie("sf") || 1;  //分辨率
-var lang = +getCookie("lang") || 0;  //语言
+var lang = getLang();
 var PI = Math.PI;
 var DPI = 2 * PI;
 var HPI = 0.5 * PI;
@@ -206,7 +208,6 @@ function render(){
 	if(isLoading && (newTime - startTime) * 1e-3 > waitTime && window.onload){
 		window.onload();
 	}
-	
 	//判断主题是否改变
 	theme.get(function(){color = getColor(theme.value)});
 	
@@ -247,9 +248,3 @@ window.onload = function(){
 </script>
 </body>
 </html>
-
-
-
-
-
-
