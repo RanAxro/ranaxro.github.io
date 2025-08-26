@@ -242,6 +242,7 @@ setInterval(render, 1000 / FPS);
 <script src="js/ui.js"></script>
 <script>
 window.onload = function(){
+	if(!isLoading) return ;
 	ui_homeAL();
 	isLoading = false;
 };
