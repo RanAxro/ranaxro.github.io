@@ -1,0 +1,1115 @@
+<html>
+<head>
+  <title>岭南美食</title>
+<style type="text/css">
+*::-webkit-scrollbar{
+  width: 0;
+}
+*{
+  -ms-overflow-style: none;
+  overflow: -moz-hidden-unscrollable;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  user-select: none;
+}
+
+:root{
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+
+html{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+}
+
+body{
+  margin: auto;
+  border-radius: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 30px);
+  max-height: 100%;
+  background: #EEE;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.pagebtn{
+  position: fixed;
+  bottom: 0;
+  width: 50px;
+  line-height: 50px;
+  background: #EEE;
+  text-align: center;
+  font-size: 32px;
+  opacity: .1;
+  transition: all .3s;
+	z-index: 10;
+}
+.pagebtn:hover{
+  opacity: .2;
+}
+
+/* 1 */
+#page1{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#page1 .image{
+  width: 100%;
+  height: calc(100% + 40px);
+  background-image: url("linan_files/img1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  transition: all ease-out 1s;
+  transform-origin: center left;
+  transform: scale(1.2);
+}
+
+/* 2 */
+#page2{
+  position: relative;
+  left: -100%;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: all ease-out .7s;
+}
+#page2 .block{
+  position: relative;
+  left: -10%;
+  transform: rotate(20deg) scaleY(2);
+  transform-origin: center center;
+  width: 100%;
+  height: 100%;
+}
+.block1{
+  width: 60%;
+  height: 100%;
+  background: #EEE;
+  opacity: .7;
+  float: left;
+  transition: all ease-out .7s;
+}
+.block2{
+  width: 130px;
+  height: 100%;
+  background: #DDD;
+  opacity: .3;
+  box-shadow: inset 40px 0px 30px -15px #333, inset -25px 0px 50px -15px #FFF;
+  float: left;
+}
+#p2content{
+  position: relative;
+  top: -100%;
+  width: 50%;
+  height: 100%;
+  opacity: 0;
+  transition: all 1s;
+}
+#p2text1{
+  margin: 10% 0 0 40px;
+  font-size: 64px;
+  color: #333;
+}
+#p2text2{
+  margin: 15px 0 0 40px;
+  font-size: 20px;
+  color: #777;
+}
+.card{
+  margin: 100px 0 0 40px;
+  height: 10px;
+}
+.card img{
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+.cardtext1{
+  width: calc(100% - 60px);
+  float: right;
+  color: #777;
+}
+.cardtext2{
+  font-size: 2.5vh;
+  color: #333;
+}
+
+/* page3 */
+#page3{
+  position: relative;
+  left: -100%;
+  top: -200%;
+  width: 100%;
+  height: 100%;
+  background: #EEE;
+  opacity: .7;
+  transition: all ease-out .7s;
+}
+#p3logo{
+  position: relative;
+  left: 15px;
+  height: 100%;
+  font-size: 16px;
+  text-align: center;
+  writing-mode: vertical-lr;
+  color: #888;
+  transform: rotate(180deg);
+  z-index: 10;
+}
+#page3 .area{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #EEE;
+  opacity: 0;
+}
+#p3area1{
+  top: -100%;
+  transition: all 1s;
+}
+#p3area1 img{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+}
+#p3a1text1{
+  position: absolute;
+  top: 35px;
+  left: 80px;
+  font-size: 80px;
+  color: #333;
+  text-shadow: 3px 3px 25px #666;
+  z-index: 1;
+}
+#p3a1text2{
+  position: absolute;
+  top: 150px;
+  left: 80px;
+  font-size: 20px;
+  color: #777;
+  text-shadow: 3px 3px 10px #666;
+  z-index: 1;
+}
+#p3a1card{
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  width: calc(100% - 300px);
+  height: calc(100% - 250px);
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 190px);
+}
+.p3a1card{
+  border-radius: 8px;
+  padding: 20px;
+  width: 130px;
+  height: 150px;
+  background: rgba(238, 238, 238, 0.3);
+  font-size: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075), 0px 0px 80px rgba(0, 0, 0, 0.15);
+  place-self: center;
+  transition: all .3s;
+}
+.p3a1card:hover{
+  box-shadow: 0px 0px 20px #999;
+  background: rgba(221, 221, 221, 0.5);
+}
+
+#p3area2{
+  position: relative;
+  top: -200%;
+  opacity: 0;
+  transform-origin: top center;
+  transition: all .5s;
+  z-index: 2;
+}
+.p3a2text1{
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  width: 100%;
+  text-align: center;
+  font-size: 64px;
+  color: #333;
+  opacity: 0;
+  transition: all .5s;
+  z-index: 3;
+}
+.p3a2text2{
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  color: #777;
+  z-index: 3;
+}
+.p3a2img{
+  position: absolute;
+  left: 70%;
+  bottom: -50%;
+  height: 50%;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: all .6s ease-out;
+}
+
+#p3area3{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: -300%;
+  opacity: 0;
+  background-color: #EEE;
+  background-image: url("linan_files/p3.jpg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  transform-origin: center center;
+  transition: all .5s;
+  z-index: 4;
+}
+#p3a3content1{
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("linan_files/lay1.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  transform-origin: center center;
+  transition: all .5s;
+}
+#p3a3text1{
+  text-shadow: 0px 0px 10px #666;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center;
+  font-size: 96px;
+  color: #333;
+  transition: all .5s;
+  transform-origin: center center;
+  transform: scale(3);
+}
+#p3a3text2{
+  position: absolute;
+  top: calc(50% - 70px);
+  left: 20%;
+  padding: 20px 0px 10px 80px;
+  width: 50%;
+  line-height: 35px;
+  background-image: url("linan_files/plant.png");
+  background-repeat: no-repeat;
+  background-size: auto 70px;
+  background-position: 10px center;
+  font-size: 20px;
+  color: #777;
+  text-shadow: 2px 2px 10px #666;
+  opacity: 0;
+  transition: all .5s;
+}
+#p3a3text3{
+  position: absolute;
+  top: calc(50% + 40px);
+  left: 20%;
+  padding: 20px 0px 10px 80px;
+  width: 50%;
+  line-height: 35px;
+  background-image: url("linan_files/culture.png");
+  background-repeat: no-repeat;
+  background-size: auto 70px;
+  background-position: 10px center;
+  font-size: 20px;
+  color: #777;
+  text-shadow: 2px 2px 10px #666;
+  opacity: 0;
+  transition: all .5s;
+}
+
+#p3a3content2{
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("linan_files/lay2.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  transform-origin: center center;
+  transition: all .5s;
+}
+#p3a3text4{
+  text-shadow: 0px 0px 10px #666;
+  position: absolute;
+  left: 0;
+  bottom: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 96px;
+  color: #333;
+  transform: scale(1) skew(0);
+  transition: all .5s;
+}
+#p3a3text5{
+  text-shadow: 0px 0px 5px #888;
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  width: 40%;
+  height: 250px;
+  font-size: 58px;
+  color: #777;
+  transition: all .3s;
+  opacity: 0;
+}
+
+/* page4 */
+#page4{
+  position: relative;
+  top: -300%;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all ease-out .7s;
+  z-index: 10;
+  pointer-events: none;
+}
+#p4block{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(2) rotate(20deg);
+  transform-origin: center center;
+}
+#p4block1{
+  width: 50%;
+  height: 100%;
+  background: #EEE;
+  float: left;
+}
+#p4block2{
+  width: 50%;
+  height: 100%;
+  background: #AD9267;
+  float: left;
+}
+
+#p4area1{
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all .5s;
+}
+#p4area1 img{
+  position: absolute;
+  left: 30%;
+  top: 20%;
+  height: 70%;
+}
+#p4a1text1{
+  position: absolute;
+  top: calc(50% - 250px);
+  left: 10%;
+  font-size: 192px;
+  font-weight: bold;
+  color: #AD9267;
+  text-shadow: 5px 5px 7px #AD9267;
+  opacity: 0;
+  transition: all .5s;
+}
+#p4a1text2{
+  position: absolute;
+  top: calc(50% - 0px);
+  right: 10%;
+  font-size: 192px;
+  font-weight: bold;
+  color: #EEE;
+  text-shadow: 5px 5px 7px #EEE;
+  opacity: 0;
+  transition: all .5s;
+}
+
+#p4area2{
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #EEE;
+  transition: all .5s;
+}
+#p4area2 span{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+#p4area2 div{
+  margin: 150px 0;
+  position: relative;
+  left: 50px;
+  height: 30%;
+  font-size: 48px;
+  color: #555;
+  text-shadow: 0 0 0 #AAA;
+  transition: all .3s;
+}
+#p4area2 div:hover{
+  color: #AD9267;
+  text-shadow: 5px 5px 5px #AAA;
+}
+#p4area2 img{
+  height: 100%;
+}
+#p4a2text1{
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  color: #AD9267;
+  font-size: 32px;
+}
+
+#p4area3{
+  position: relative;
+  top: -200%;
+  width: 100%;
+  height: 100%;
+  transition: all .5s;
+  z-index: 20;
+  pointer-events: none;
+}
+#p4a3img1{
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  transition: all .5s;
+  z-index: 22;
+}
+#p4a3img2{
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  transform-origin: center center;
+  transform: rotate(180deg);
+  transition: all .5s;
+  z-index: 22;
+}
+#p4a3set{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 800%;
+  height: 100%;
+  background: #EEE;
+  transition: all .5s;
+  display: grid;
+  grid-template-columns: repeat(8, 12.5%);
+  overflow: visible;
+}
+#p4a3set img{
+  place-self: center;
+  height: 60%;
+}
+
+/* page5 */
+#page5{
+  position: relative;
+  top: -400%;
+  width: 100%;
+  height: 100%;
+  background: #AD9267;
+  opacity: 0;
+  transition: all ease-out .7s;
+  z-index: 30;
+  pointer-events: none;
+}
+#p5area1{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all .4s;
+  overflow: auto;
+  background-image: url("linan_files/p5back.jpg");
+  background-size: cover;
+}
+.p5a1text1{
+  margin-top: 50px;
+  position: relative;
+  top: 60px;
+  left: 100px;
+  width: calc(100% - 200px);
+  font-size: 64px;
+  color: #333;
+}
+.p5a1text2{
+  margin: 30px 0;
+  position: relative;
+  top: 60px;
+  left: 100px;
+  width: calc(100% - 200px);
+  font-size: 32px;
+  color: #555;
+}
+
+/* page6 */
+#page6{
+  position: relative;
+  top: -500%;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  transition: all ease-out .7s;
+  pointer-events: none;
+  perspective: 500px;
+  z-index: 60;
+}
+#end{
+  position: absolute;
+  border-radius: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: #EEE;
+  transition: all .5s;
+  transform: rotateY(0deg) scale(1);
+  z-index: 62;
+}
+#endtext{
+  width: 100%;
+  height: 100%;
+  background-color: #EEE;
+  background-image: url("linan_files/p5.jpg");
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-repeat: repeat-x;
+  background-clip: text;
+  font-size: 256px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0);
+  text-align: center;
+  line-height: calc(100vw * 0.56);
+  -webkit-animation: shining 3s linear infinite;
+  animation: shining 3s linear infinite;
+  z-index: 63;
+}
+@-webkit-keyframes shining {
+  from {
+    background-position: -1000%;
+  }
+  to {
+    background-position: 1000%;
+  }
+}
+@keyframes shining {
+  from {
+    background-position: -1000%;
+  }
+  to {
+    background-position: 1000%;
+  }
+}
+#p6text1{
+  position: absolute;
+  right: 10%;
+  top: 20%;
+  color: #AAA;
+  font-size: 32px;
+  z-index: 61;
+}
+
+</style>
+</head>
+<body>
+
+<div class="pagebtn" style="left: 0;" onclick="changePage(0)">&lt;</div>
+<div class="pagebtn" style="left: 50px;" onclick="changePage(1)">&gt;</div>
+
+<!-- page1 -->
+<div id="page1">
+  <div id="page1image" class="image" onclick="toPage(2)"></div>
+</div>
+
+<!-- page2 -->
+<div id="page2" onclick="toPage(3)">
+  <div class="block">
+    <div id="p2block1" class="block1"></div>
+    <div class="block2"></div>
+    <div class="block2"></div>
+  </div>
+  <div id="p2content">
+    <div id="p2text1">岭南美食</div>
+    <div id="p2text2">民以食为天, 广东人对 “食”的文化尤其看重，<br>可谓 “背脊朝天，人皆可食”</div>
+    <div class="card" style="width: 40vw;">
+      <img src="linan_files/region.png" alt="">
+      <div class="cardtext1"><div class="cardtext2">地区</div>主要的范围是珠江三角洲等地区，气候属于亚热带季风性气候，海岸线长，因此海产品丰富</div>
+    </div>
+    <div class="card" style="width: 35vw;">
+      <img src="linan_files/knife.png" alt="">
+      <div class="cardtext1"><div class="cardtext2">用料</div>用料独特，飞禽走兽，山珍海味，可谓无所不有，并且看重汤食</div>
+    </div>
+  </div>
+</div>
+
+<!-- page3 -->
+<div id="page3" onclick="changePage(1)">
+  <div id="p3logo">———&nbsp;&nbsp;Lingnan&nbsp;&nbsp;———</div>
+  <div id="p3area1" class="area">
+    <div id="p3a1text1">广东早茶</div>
+    <div id="p3a1text2">Cantonese Dimsum</div>
+    <div id="p3a1card">
+      <div class="p3a1card"><br>叹茶<br>在广东里<br>是饮茶的别称<br>即享受之意</div>
+      <div class="p3a1card"><br>世间百态<br>和人情世故<br>都凝聚<br>在"饮茶"之中</div>
+      <div class="p3a1card"><br>一盅两件<br>泡一壶香茶<br>点两件点心<br>品茶尝点</div>
+      <div class="p3a1card"><br>广东茶点特征<br>种类繁多<br>讲究<br>精.美.新.巧</div>
+    </div>
+    <img src="linan_files/p3a1img1.png" alt="">
+  </div>
+
+  <div id="p3area2" class="area">
+    <div id="p3a2text1" class="p3a2text1">虾饺<div class="p3a2text2">鲜活虾肉囊入<br>软糯皮薄,美味满溢<br>细腻口感与香气交织</div></div>
+    <img src="linan_files/shrimpdumpling.png" id="p3a2img1" class="p3a2img"></img>
+
+    <div id="p3a2text2" class="p3a2text1">干蒸烧麦<div class="p3a2text2">绵软外衣内藏惊喜<br>内馅精选优质内馅与香菇<br>口感鲜嫩多汁</div></div>
+    <img src="linan_files/drysteaming.png" id="p3a2img2" class="p3a2img" alt="" >
+
+    <div id="p3a2text3" class="p3a2text1">蛋挞<div class="p3a2text2">金黄酥皮包囊着<br>一股浓郁奶香,外酥内软<br>轻轻一口,香气四溢</div></div>
+    <img src="linan_files/eggtart.png" id="p3a2img3" class="p3a2img" alt="" >
+
+    <div id="p3a2text4" class="p3a2text1">叉烧包<div class="p3a2text2">火候把握恰到好处<br>皮囊馅饱满,肉质醇香入味,鲜嫩多汁</div></div>
+    <img src="linan_files/chasiubao.png" id="p3a2img4" class="p3a2img" alt="" >
+  </div>
+
+  <div id="p3area3">
+    <div id="p3a3content1">
+      <div id="p3a3text1">Why</div>
+      <div id="p3a3text2">追求美味,是高智慧生命对生活的敬意与热爱;它不仅能给你饱腹的满足,这些美好的东西还能治愈</div>
+      <div id="p3a3text3">岭南地区融合了南方各个民族的文化元素，形成了独特的岭南文化。 传承岭南文化不仅有助于保护和弘扬中华民族优秀传统文化，也有利于促进当代社会的发展和进步。</div>
+    </div>
+    <div id="p3a3content2">
+      <div id="p3a3text4">How&nbsp;了解美食&nbsp;?</div>
+      <div id="p3a3text5">•询问长辈<br>•勘查资料<br>•实地考察</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- page4 -->
+<div id="page4" onclick="changePage(1)">
+  <div id="p4block">
+    <div id="p4block1"></div>
+    <div id="p4block2"></div>
+  </div>
+
+  <div id="p4area1">
+    <img src="linan_files/p4back.png" alt="">
+    <div id="p4a1text1">尝</div>
+    <div id="p4a1text2">试</div>
+  </div>
+
+  <div id="p4area2">
+    <p id="p4a2text1">—— working process ——</p>
+    <span>
+      <div><img src="linan_files/course1.png" alt="">200mL牛奶上锅蒸15分钟</div>
+      <div style="left: 150px;"><img src="linan_files/course2.png" alt="">晾晒表面形成面皮</div>
+      <div><img src="linan_files/course3.png" alt="">导入零卡糖和鸡蛋清搅匀</div>
+      <div style="left: 200px;"><img src="linan_files/course4.png" alt="">筛到碗里盖保鲜膜蒸20分钟</div>
+    </span>
+    
+  </div>
+
+  <div id="p4area3">
+    <div id="p4a3set">
+      <img src="linan_files/set1/set1img1.png" alt="">
+      <img src="linan_files/set1/set1img2.png" alt="">
+      <img src="linan_files/set1/set1img3.png" alt="">
+      <img src="linan_files/set1/set1img4.png" alt="">
+      <img src="linan_files/set1/set1img5.png" alt="">
+      <img src="linan_files/set1/set1img6.png" alt="">
+      <img src="linan_files/set1/set1img7.png" alt="">
+      <img src="linan_files/set1/set1img8.png" alt="">
+    </div>
+    <img id="p4a3img1" src="linan_files/set1/set1lay.png" alt="">
+    <img id="p4a3img2" src="linan_files/set1/set1lay.png" alt="">
+  </div>
+</div>
+
+<!-- page5 -->
+<div id="page5" onclick="changePage(1)">
+  <div id="p5area1">
+    <div class="p5a1text1">“食”的重要性:</div>
+    <div class="p5a1text2">俗话说“民以食为天”，可见饮食对于人类的重要性。老百姓日常生活所必需的七样东西，俗称开门七件事，分别是：柴、米、油、盐、酱、醋、茶，全部与吃有关。从燧人氏“钻木取火”后，中国人结束了茹毛饮血的时代，由此逐步产生了蒸、煮、煎、熬、滚、汆、涮、煲、烫、炙、炒、烧、炸、灼、焗、焖、焯、炖、烤等烹饪方法。吃，在生活的构成中占了很大比重，它不但丰富了我们生活的面貌，也支撑着人类生命体的繁衍，维护我们的健康。
+吃是伴随我们一生的重要生活内容，它给我们带来温暖与幸福。通过饮食，人们知道了如何去吃、如何去种、如何去养、如何去收、如何去储存、如何管理和分配，知道了四季的变化，知道了各种生物生长的过程与周期，知道了用节气来指导农事，也知道了我们身处环境的好与坏。农耕社会的人会在不适合种粮食的地方种水果、种茶叶，游牧民族会逐水草而放牧——我们对食物的获取和种植，山民采蘑菇、挖竹笋知道取大留小、循环利用，渔民懂得控制渔网尺寸、保证年年有收获。解决、研究吃的过程，是我们解读大自然的过程，使我们能够对地球的资源有更合理的使用和分配。
+所以我们谈吃，不只是简单地谈美味，更多的是谈我们与历史、我们与社会、我们与自然生态的互动，正所谓“仓廪足而知礼仪，衣食足则知荣辱”，饮食已经成为中华文明赖以产生的基础，由此形成了独特的饮食文化。中华饮食文化博大精深，除了讲究“色、香、味”俱全外，还注重饮食情趣，中国菜肴的名称可以说出神入化、雅俗共赏，经营名菜的饭店也因此扬名，宣传饮食的节目更是喜闻乐见，如“将军过桥”“狮子头”“叫化鸡”“东坡肉”等口口相传，北京的“全聚德”、天津的“狗不理”、杭州的“知味观”、苏州的“松鹤楼”可谓驰名国内外，《舌尖上的中国》《味道》《天天饮食》等也成为品牌电视节目。通过关注吃来参与历史，参与社会，参与生态，来探索另一条隐秘的生命轨迹。这个过程，我们每个人都参与其中。</div>
+    <div class="p5a1text1">青少年应积极传承岭南优秀文化：</div>
+    <div class="p5a1text2">
+      <div>1. 从心底对岭南优秀文化产生认同。做好岭南优秀文化的传承与弘扬，从心底对岭南优秀文化产生认同，是当代青少年肩负的使命和责任。岭南文化具有的丰富性和多样性，能够给我国的当代青少年带来丰富的文化精神内涵。</div><br>
+      <div>2. 提高个人文化素养。传承岭南优秀文化，我们应提高自己的素养，使自己拥有文化底蕴，并积极投身实践中，进行宣传活动，在帮助他人的同时，有利于继承和发扬岭南优秀文化。</div><br>
+      <div>3. 培养自己对于岭南优秀文化的兴趣，努力学习岭南优秀文化的知识，主动担负起传承岭南优秀文化的重任。学生要对岭南优秀文化形成正确的认识，要纠正自己对于岭南优秀文化的错误认识，在学习岭南优秀文化的过程中去主动发扬，主动承担传承的重任。用发展的眼光对待岭南优秀文化，加大宣传力度，普及岭南优秀文化和美德。</div><br><br><br>
+    </div>
+  </div>
+</div>
+
+<!-- page6 -->
+<div id="page6">
+  <div id="end">
+    <div id="endtext">THANK</div>
+  </div>
+  <div id="p6text1">
+    小组成员<br>
+    /* privacy */<br>
+    /* privacy */<br>
+    /* privacy */<br>
+    /* privacy */<br>
+    /* privacy */
+  </div>
+</div>
+  
+<script>
+
+//16:9
+window.onload = function(){
+  let autoWidth = function(){
+    let body = document.body;
+    let width = body.clientWidth;
+    body.style.height = width * 9 / 16;
+  }
+  setInterval(autoWidth, 100);
+}
+
+let nowPage = 1;
+function changePage(next){
+  next ? toPage(++nowPage) : toPage(--nowPage)
+}
+
+function toPage(num){
+  nowPage = num;
+  // console.log(nowPage)
+  switch(num){
+    case 0:
+      nowPage++;
+      break;
+    case 1:
+      document.getElementById("page1image").style.transform = "scale(1.2)";
+      document.getElementById("page2").style.left = "-100%";
+      document.getElementById("p2content").style.opacity = "0";
+      break;
+    case 2:
+      document.getElementById("page1image").style.transform = "scale(1)";
+      document.getElementById("page2").style.left = "0%";
+      setTimeout(function(){
+        document.getElementById("p2content").style.opacity = "1";
+      }, 600);
+
+      document.getElementById("p2block1").style.opacity = "0.7";
+      document.getElementById("page3").style.left = "-100%";
+      document.getElementById("page3").style.opacity = "0.7";
+        document.getElementById("p3area1").style.opacity = "0";
+      break;
+    case 3:
+      document.getElementById("page2").style.left = "100%";
+      document.getElementById("page3").style.left = "0%";
+      setTimeout(function(){
+        document.getElementById("p2block1").style.opacity = "1";
+        document.getElementById("page3").style.opacity = "1";
+        setTimeout(function(){
+          document.getElementById("p3area1").style.opacity = "1";
+          
+        }, 400)
+      }, 100)
+      
+      document.getElementById("p3area2").style.opacity = "0";
+      document.getElementById("page1").style.opacity = "1";
+      document.getElementById("p3a2text1").style.left = "100px";
+      document.getElementById("p3a2text1").style.opacity = "0";
+        document.getElementById("p3a2img1").style.left = "70%";
+      document.getElementById("p3a2img1").style.bottom = "-50%";
+        document.getElementById("p3a2img1").style.opacity = "0";
+      break;
+    case 4:
+      document.getElementById("p3area2").style.opacity = "1";
+      document.getElementById("page1").style.opacity = "0";
+      document.getElementById("page2").style.opacity = "1";
+      setTimeout(function(){
+        document.getElementById("p3a2text1").style.left = "0";
+        document.getElementById("p3a2text1").style.opacity = "1";
+        document.getElementById("p3a2img1").style.left = "50%";
+        document.getElementById("p3a2img1").style.bottom = "-5%";
+        document.getElementById("p3a2img1").style.opacity = "1";
+
+        document.getElementById("p3a2text2").style.left = "100px";
+        document.getElementById("p3a2text2").style.opacity = "0";
+        document.getElementById("p3a2img2").style.left = "70%";
+        document.getElementById("p3a2img2").style.bottom = "-50%";
+        document.getElementById("p3a2img2").style.opacity = "0";
+      }, 400)
+      break;
+    case 5:
+      document.getElementById("p3area1").style.opacity = 1;
+      document.getElementById("page2").style.opacity = 0;
+
+      document.getElementById("p3a2text1").style.left = "-100px";
+      document.getElementById("p3a2text1").style.opacity = "0";
+      document.getElementById("p3a2img1").style.left = "30%";
+      document.getElementById("p3a2img1").style.bottom = "-50%";
+      document.getElementById("p3a2img1").style.opacity = "0";
+
+      document.getElementById("p3a2text2").style.left = "0px";
+      document.getElementById("p3a2text2").style.opacity = "1";
+      document.getElementById("p3a2img2").style.left = "50%";
+      document.getElementById("p3a2img2").style.bottom = "-5%";
+      document.getElementById("p3a2img2").style.opacity = "1";
+      
+      document.getElementById("p3a2text3").style.left = "100px";
+      document.getElementById("p3a2text3").style.opacity = "0";
+      document.getElementById("p3a2img3").style.left = "70%";
+      document.getElementById("p3a2img3").style.bottom = "-50%";
+      document.getElementById("p3a2img3").style.opacity = "0";
+      break;
+    case 6:
+      document.getElementById("p3area1").style.opacity = 0;
+
+      document.getElementById("p3a2text2").style.left = "-100px";
+      document.getElementById("p3a2text2").style.opacity = "0";
+      document.getElementById("p3a2img2").style.left = "30%";
+      document.getElementById("p3a2img2").style.bottom = "-50%";
+      document.getElementById("p3a2img2").style.opacity = "0";
+
+      document.getElementById("p3a2text3").style.left = "0px";
+      document.getElementById("p3a2text3").style.opacity = "1";
+      document.getElementById("p3a2img3").style.left = "50%";
+      document.getElementById("p3a2img3").style.bottom = "-5%";
+      document.getElementById("p3a2img3").style.opacity = "1";
+      
+      document.getElementById("p3a2text4").style.left = "100px";
+      document.getElementById("p3a2text4").style.opacity = "0";
+      document.getElementById("p3a2img4").style.left = "70%";
+      document.getElementById("p3a2img4").style.bottom = "-50%";
+      document.getElementById("p3a2img4").style.opacity = "0";
+      break;
+    case 7:
+      document.getElementById("p3a2text3").style.left = "-100px";
+      document.getElementById("p3a2text3").style.opacity = "0";
+      document.getElementById("p3a2img3").style.left = "30%";
+      document.getElementById("p3a2img3").style.bottom = "-50%";
+      document.getElementById("p3a2img3").style.opacity = "0";
+
+      document.getElementById("p3a2text4").style.left = "0px";
+      document.getElementById("p3a2text4").style.opacity = "1";
+      document.getElementById("p3a2img4").style.left = "50%";
+      document.getElementById("p3a2img4").style.bottom = "-5%";
+      document.getElementById("p3a2img4").style.opacity = "1";
+      
+      document.getElementById("p3area2").style.transition = "all .5s";
+      document.getElementById("p3area2").style.top = "-200%";
+      document.getElementById("p3area2").style.transform = "scale(1)";
+      document.getElementById("p3area3").style.opacity = "0";
+      document.getElementById("p3a3text1").style.transform = "scale(.5)";
+      document.getElementById("p3a3text1").style.top = "30px";
+      document.getElementById("p3a3text2").style.opacity = "0";
+      document.getElementById("p3a3text3").style.opacity = "0";
+      setTimeout(function(){
+        document.getElementById("p3a3text1").innerText = "Why";
+      }, 300)
+      break;
+    case 8:
+      document.getElementById("p3area2").style.transition = "all .7s";
+      document.getElementById("p3area2").style.top = "calc(-150% + 32px)";
+      document.getElementById("p3area2").style.transform = "scale(3)";
+      document.getElementById("p3area3").style.opacity = "1";
+      document.getElementById("p3a3text1").style.transform = "scale(1)";
+      document.getElementById("p3a3text1").style.top = "calc(50% - 48px)";
+      setTimeout(function(){
+        document.getElementById("p3a3text1").innerText = "Why 寻";
+        setTimeout(function(){
+          document.getElementById("p3a3text1").innerText = "Why 寻找";
+          setTimeout(function(){
+            document.getElementById("p3a3text1").innerText = "Why 寻找美";
+              setTimeout(function(){
+                document.getElementById("p3a3text1").innerText = "Why 寻找美食";
+                setTimeout(function(){
+                  document.getElementById("p3a3text1").innerText = "Why 寻找美食 ?"
+                  setTimeout(function(){
+                    document.getElementById("p3a3text1").style.top = "50px";
+                    document.getElementById("p3a3text2").style.opacity = "1";
+                    document.getElementById("p3a3text3").style.opacity = "1";
+                  }, 400)
+                }, 400)
+              }, 200)
+          }, 200)
+        }, 200)
+      }, 700)
+      document.getElementById("p3area3").style.backgroundPosition = "right center";
+      document.getElementById("p3a3content1").style.top = "0%";
+      document.getElementById("p3a3content2").style.top = "0%";
+      document.getElementById("p3a3text5").style.opacity = "0"
+      break;
+    case 9:
+      document.getElementById("p3area3").style.backgroundPosition = "55vw center";
+      document.getElementById("p3a3content1").style.top = "-100%";
+      document.getElementById("p3a3content2").style.top = "-100%";
+
+      document.getElementById("p3a3text1").style.top = "30px";
+      document.getElementById("p3a3text2").style.opacity = "0";
+      document.getElementById("p3a3text3").style.opacity = "0";
+      setTimeout(function(){
+        document.getElementById("p3a3text1").innerText = "Why";
+        document.getElementById("p3a3text5").style.opacity = "1"
+      }, 400)
+
+      document.getElementById("p3a3text4").style.left = "0"
+      document.getElementById("p3a3text4").style.bottom = "20%"
+      document.getElementById("p3a3text4").style.transform = "scale(1) skew(0)";
+      document.getElementById("page3").style.opacity = "1"
+      document.getElementById("page4").style.opacity = "0";
+      document.getElementById("page4").style.pointerEvents = "none";
+      document.getElementById("p4a1text1").style.opacity = "0";
+      document.getElementById("p4a1text2").style.opacity = "0";
+      document.getElementById("p4a1text1").style.top = "calc(50% - 250px)";
+      document.getElementById("p4a1text2").style.top = "calc(50% - 0px)";
+      break;
+    case 10:
+      document.getElementById("p3a3text4").style.left = "80%"
+      document.getElementById("p3a3text4").style.bottom = "50%"
+      document.getElementById("p3a3text4").style.transform = "scale(4) skew(-30deg)";
+      document.getElementById("page3").style.opacity = "0"
+      setTimeout(function(){
+        document.getElementById("page4").style.opacity = "1";
+        document.getElementById("page4").style.pointerEvents = "auto";
+        setTimeout(function(){
+          document.getElementById("p4a1text1").style.opacity = "1";
+          document.getElementById("p4a1text1").style.top = "calc(50% - 125px)";
+          document.getElementById("p4a1text2").style.opacity = "1";
+          document.getElementById("p4a1text2").style.top = "calc(50% - 125px)";
+        }, 500)
+      }, 200)
+
+      document.getElementById("p4area1").style.top = "0";
+      document.getElementById("p4area2").style.top = "0";
+      break;
+    case 11:
+      document.getElementById("p4area1").style.top = "-100%";
+      document.getElementById("p4area2").style.top = "-100%";
+      document.getElementById("p4a1text1").style.opacity = "0";
+      document.getElementById("p4a1text2").style.opacity = "0";
+      document.getElementById("p4a1text1").style.top = "calc(50% - 250px)";
+      document.getElementById("p4a1text2").style.top = "calc(50% - 0px)";
+      
+      document.getElementById("p4area3").style.pointerEvents = "none";
+      document.getElementById("p4a3img1").style.top = "-100%";
+      document.getElementById("p4a3img2").style.bottom = "-100%";
+      document.getElementById("p4area2").style.left = "0%";
+      document.getElementById("p4a3set").style.left = "100%";
+      break;
+    case 12:
+      document.getElementById("p4area3").style.pointerEvents = "auto";
+      document.getElementById("p4a3img1").style.top = "0%";
+      document.getElementById("p4a3img2").style.bottom = "0%";
+      setTimeout(function(){
+        document.getElementById("p4area2").style.left = "-100%";
+        document.getElementById("p4a3set").style.left = "0%";
+      }, 500)
+      break;
+    case 13:
+      document.getElementById("p4a3set").style.left = "-100%";
+      break;
+    case 14:
+      document.getElementById("p4a3set").style.left = "-200%";
+      break;
+    case 15:
+      document.getElementById("p4a3set").style.left = "-300%";
+      break;
+    case 16:
+      document.getElementById("p4a3set").style.left = "-400%";
+      break;
+    case 17:
+      document.getElementById("p4a3set").style.left = "-500%";
+      break;
+    case 18:
+      document.getElementById("p4a3set").style.left = "-600%";
+      break;
+    case 19:
+      document.getElementById("p4a3set").style.left = "-700%";
+
+      document.getElementById("p4a3img1").style.transform = "translateY(0) scaleY(1)";
+      document.getElementById("p4a3img2").style.transform = "translateY(0) rotate(180deg) scaleY(1)";
+      document.getElementById("page5").style.opacity = "0";
+      document.getElementById("page5").style.pointerEvents = "none";
+      document.getElementById("page5").style.background = "#AD9267";
+      document.getElementById("p5area1").style.opacity = "0";
+      break;
+    case 20:
+      document.getElementById("p4a3img1").style.transform = "translateY(100%) scaleY(3)";
+      document.getElementById("p4a3img2").style.transform = "translateY(-100%) rotate(180deg) scaleY(3)";
+      document.getElementById("page5").style.opacity = "1";
+      document.getElementById("page5").style.pointerEvents = "auto";
+      setTimeout(function(){
+        document.getElementById("page5").style.background = "#EEE";
+        setTimeout(function(){
+          document.getElementById("p5area1").style.opacity = "1";
+        }, 500)
+      }, 600)
+
+      document.getElementById("page6").style.opacity = "0";
+      document.getElementById("page6").style.pointerEvents = "none";
+      document.getElementById("end").style.transform = "rotateY(0deg) scale(1)";
+        document.getElementById("end").style.left = "0%";
+        document.getElementById("end").style.borderRadius = "0px";
+      break;
+    case 21:
+      document.getElementById("page6").style.opacity = "1";
+      document.getElementById("page6").style.pointerEvents = "auto";
+      setTimeout(function(){
+        document.getElementById("end").style.transform = "rotateY(50deg) scale(.4)";
+        document.getElementById("end").style.left = "-10%";
+        document.getElementById("end").style.borderRadius = "50px";
+      }, 1000)
+      break;
+    case 22:
+      nowPage--;
+      break;
+  }
+}
+
+// toPage(2);
+// toPage(3);
+// toPage(4);
+// toPage(5);
+// toPage(6);
+// toPage(7);
+// toPage(8);
+// toPage(9);
+// toPage(10);
+// toPage(11);
+// toPage(12);
+// toPage(13);
+// toPage(14);
+// toPage(15);
+// toPage(16);
+// toPage(17);
+// toPage(18);
+// toPage(19);
+// toPage(20);
+// toPage(21);
+
+</script>
+
+</body>
+</html>
